@@ -17,11 +17,11 @@
     {% endblock %}
 
 </head>
-<body>
+<body class="uk-background-secondary" uk-height-viewport>
 {% block header %}
 {% include 'fragments/header.html' %}
 {% endblock %}
-<div class="uk-container">
+<div class="uk-container uk-flex uk-flex-center">
     {% block content %}
     {% endblock %}
 </div>

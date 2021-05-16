@@ -1,5 +1,5 @@
 <li class="uk-flex uk-flex-between" hx-swap="outerHTML" hx-target="this">
-    <form id="todoForm" class="uk-form-horizontal" hx-put="/edit/1" hx-trigger="focusout">
-        <input autofocus class="uk-input" type="text" name="content" value="{{ content }}">
+    <form id="todoForm" class="uk-form-horizontal uk-width-1-1" hx-put="/edit/{{ todo.id }}" hx-trigger="submit,focusout">
+        <input autocomplete="off" autofocus class="uk-input" type="text" name="content" value="{{ todo.content }}">
     </form>
 </li>
