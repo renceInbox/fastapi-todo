@@ -1,0 +1,14 @@
+version: "3.8"
+
+networks:
+  public:
+    external: true
+
+services:
+  todo_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: /start
+    networks:
+      - traefik
