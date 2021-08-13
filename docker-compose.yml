@@ -1,7 +1,7 @@
 version: "3.8"
 
 networks:
-  public:
+  traefik-public:
     external: true
 
 services:
@@ -11,4 +11,19 @@ services:
       dockerfile: Dockerfile
     command: /start
     networks:
-      - traefik
+      - traefik-public
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-public
+      - traefik.constraint-label=traefik-public
+      - traefik.http.routers.fastapi-todo-http.rule=Host(`fastapi-todo.renceinbox.com`)
+      - traefik.http.routers.fastapi-todo-http.entrypoints=http
+      - traefik.http.routers.fastapi-todo-http.middlewares=https-redirect
+      - traefik.http.routers.fastapi-todo-https.rule=Host(`fastapi-todo.renceinbox.com`)
+      - traefik.http.routers.fastapi-todo-https.entrypoints=https
+      - traefik.http.routers.fastapi-todo-https.tls=true
+      - traefik.http.routers.fastapi-todo-https.tls.certresolver=le
+      - traefik.http.services.fastapi-todo.loadbalancer.server.port=8001
+      - traefik.http.middlewares.fastapi-todo-auth.basicauth.users=${ADMIN_USER?Variable not set}:${HASHED_PASSWORD?Variable not set}
+      - traefik.http.routers.fastapi-todo-https.middlewares=fastapi-todo-auth
+
