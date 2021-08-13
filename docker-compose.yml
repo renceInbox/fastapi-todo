@@ -24,6 +24,4 @@ services:
       - traefik.http.routers.fastapi-todo-https.tls=true
       - traefik.http.routers.fastapi-todo-https.tls.certresolver=le
       - traefik.http.services.fastapi-todo.loadbalancer.server.port=8001
-      - traefik.http.middlewares.fastapi-todo-auth.basicauth.users=${ADMIN_USER?Variable not set}:${HASHED_PASSWORD?Variable not set}
-      - traefik.http.routers.fastapi-todo-https.middlewares=fastapi-todo-auth
 
