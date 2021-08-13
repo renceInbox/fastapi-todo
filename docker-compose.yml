@@ -16,10 +16,10 @@ services:
       - traefik.enable=true
       - traefik.docker.network=traefik-public
       - traefik.constraint-label=traefik-public
-      - traefik.http.routers.fastapi-todo-http.rule=Host(`fastapi-todo.renceinbox.com`)
+      - traefik.http.routers.fastapi-todo-http.rule=Host(`todo-fastapi.renceinbox.com`)
       - traefik.http.routers.fastapi-todo-http.entrypoints=http
       - traefik.http.routers.fastapi-todo-http.middlewares=https-redirect
-      - traefik.http.routers.fastapi-todo-https.rule=Host(`fastapi-todo.renceinbox.com`)
+      - traefik.http.routers.fastapi-todo-https.rule=Host(`todo-fastapi.renceinbox.com`)
       - traefik.http.routers.fastapi-todo-https.entrypoints=https
       - traefik.http.routers.fastapi-todo-https.tls=true
       - traefik.http.routers.fastapi-todo-https.tls.certresolver=le
