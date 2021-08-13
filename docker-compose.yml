@@ -10,18 +10,20 @@ services:
       context: .
       dockerfile: Dockerfile
     command: /start
+    image: blackjuan/fastapi-todo:main
     networks:
       - traefik-public
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=traefik-public
-      - traefik.constraint-label=traefik-public
-      - traefik.http.routers.fastapi-todo-http.rule=Host(`todo-fastapi.renceinbox.com`)
-      - traefik.http.routers.fastapi-todo-http.entrypoints=http
-      - traefik.http.routers.fastapi-todo-http.middlewares=https-redirect
-      - traefik.http.routers.fastapi-todo-https.rule=Host(`todo-fastapi.renceinbox.com`)
-      - traefik.http.routers.fastapi-todo-https.entrypoints=https
-      - traefik.http.routers.fastapi-todo-https.tls=true
-      - traefik.http.routers.fastapi-todo-https.tls.certresolver=le
-      - traefik.http.services.fastapi-todo.loadbalancer.server.port=8001
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=traefik-public
+        - traefik.constraint-label=traefik-public
+        - traefik.http.routers.fastapi-todo-http.rule=Host(`todo-fastapi.renceinbox.com`)
+        - traefik.http.routers.fastapi-todo-http.entrypoints=http
+        - traefik.http.routers.fastapi-todo-http.middlewares=https-redirect
+        - traefik.http.routers.fastapi-todo-https.rule=Host(`todo-fastapi.renceinbox.com`)
+        - traefik.http.routers.fastapi-todo-https.entrypoints=https
+        - traefik.http.routers.fastapi-todo-https.tls=true
+        - traefik.http.routers.fastapi-todo-https.tls.certresolver=le
+        - traefik.http.services.fastapi-todo.loadbalancer.server.port=8001
 
