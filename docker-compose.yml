@@ -10,7 +10,7 @@ services:
       context: .
       dockerfile: Dockerfile
     command: /start
-    image: fastapi-todo:main
+    image: renceinbox/fastapi-todo:main
     networks:
       - traefik-public
     deploy:
