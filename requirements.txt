@@ -11,6 +11,6 @@ pydantic==1.8.2
 python-multipart==0.0.5
 six==1.16.0
 SQLAlchemy==1.4.15
-starlette==0.14.2
+starlette==0.25.0
 typing-extensions==3.10.0.0
 uvicorn==0.13.4
