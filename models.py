@@ -1,7 +1,6 @@
-from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import String
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, Mapped, mapped_column
 
 from database import Base
 
@@ -9,9 +8,9 @@ from database import Base
 class ToDo(Base):
     __tablename__ = "todos"
 
-    id = Column(Integer, primary_key=True, index=True)
-    content = Column(String)
-    session_key = Column(String)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    content: Mapped[str] = mapped_column(String)
+    session_key: Mapped[str] = mapped_column(String)
 
 
 def create_todo(db: Session, content: str, session_key: str):
